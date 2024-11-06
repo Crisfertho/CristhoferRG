@@ -177,9 +177,9 @@ const PROJECTS = [
       <p class="text-lg mb-4 text-pretty overflow-y-auto">{description}</p>
       <ul class="text-sm flex justify-evenly gap-6 w-full mb-4">
         {tags.map((tag) => (
-          <li key={tag} class="flex gap-4">
+          <li class="flex gap-4">
             {ICONS.filter(({ name }) => tag.includes(name)).map(({ icon: Icon }) => (
-              <div key={tag} class="flex items-center size-4">
+              <div class="flex items-center size-4">
                 <Icon />
               </div>
             ))}
