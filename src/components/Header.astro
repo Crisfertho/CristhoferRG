@@ -25,7 +25,7 @@ const navOptions = [
   {
     title: "Contacto",
     label: "contacto",
-    url: "/#contacto"
+    url: "/#footer"
   }
 ]
 ---
@@ -51,19 +51,19 @@ const navOptions = [
     const sections = document.querySelectorAll("section")
     const navItems = document.querySelectorAll("header nav a")
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-emerald-500")
-            } else {
-              item.classList.remove("text-emerald-500")
-            }
-          })
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        const navItem = Array.from(navItems).find(
+          item => item.getAttribute("aria-label") === entry.target.id
+        );
+
+        if (entry.isIntersecting && navItem) {
+          navItem.classList.add("text-emerald-500");
+        } else if (navItem) {
+          navItem.classList.remove("text-emerald-500");
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,

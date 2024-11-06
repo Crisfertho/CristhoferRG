@@ -6,13 +6,14 @@ import Whats from "../icons/Whats.astro"
 import GitH from "../icons/GitHub.astro"
 ---
 
-<footer class="rounded-lg shadow bg-black/20 backdrop-blur-lg w-full lg:max-w-[850px] mx-auto">
+<footer id="footer" class="rounded-lg shadow bg-black/20 backdrop-blur-lg w-full lg:max-w-[850px] mx-auto">
   <div class="w-full mx-auto max-w-screen-lg p-4 sm:flex md:items-center justify-between">
     <span class="text-sm text-neutral-700 dark:text-amber-200/80 sm:text-center">© 2024 
       <a href="https://linkedin.com/in/cristhofer-riverag92/" target="_blank" rel="noopener noreferrer"
         class="hover:underline text-lg font-bold text-teal-950/90 dark:text-slate-300">CristhoferRG</a>.
     </span>
 
+    <div class="flex">
     <!-- Botón de Contacto -->
     <button id="contacto" class="cursor-pointer flex items-center" aria-expanded="false" onclick="toggleContactLinks()">
       <!-- Icono de Contacto -->
@@ -20,7 +21,7 @@ import GitH from "../icons/GitHub.astro"
     </button>
 
     <!-- Enlaces de Contacto adicionales ocultos inicialmente -->
-    <ul id="contactLinks" class="flex flex-row items-center space-x-4 text-sm font-medium text-white/90 hidden absolute ">
+    <ul id="contactLinks" class="flex flex-row items-center space-x-4 text-sm font-medium text-white/90 hidden absolute animate-slide-in">
       <li>
         <a href="mailto:cristhofer.rg06@gmail.com" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
           <Email />
@@ -47,65 +48,54 @@ import GitH from "../icons/GitHub.astro"
           <GitH class="size-5"/>
         </a>
       </li>
-      
     </ul>
+  </div>
   </div>
 </footer>
 
-<script client:load>
-  // Función JavaScript para alternar la visibilidad de los enlaces adicionales
-  function toggleContactLinks() {
-    const contactLinks = document.getElementById('contactLinks');
-    const isHidden = contactLinks.classList.contains('hidden');
-    
-    if (isHidden) {
-      contactLinks.classList.remove('hidden'); // Mostrar los enlaces
-      // Agregar animación para mostrar los enlaces hacia la izquierda
-      contactLinks.classList.add('animate-slide-in');
-    } else {
-      contactLinks.classList.add('hidden'); // Ocultar los enlaces
-      contactLinks.classList.remove('animate-slide-in');
+<script>
+  // Esperar a que el DOM esté completamente cargado
+  document.addEventListener('DOMContentLoaded', function () {
+    function toggleContactLinks() {
+      const contactLinks = document.getElementById("contactLinks");
+
+      if (contactLinks) { // Verificar que el elemento existe
+        const isHidden = contactLinks.classList.contains("hidden");
+
+        // Alternar la clase hidden para mostrar u ocultar los enlaces
+        if (isHidden) {
+          contactLinks.classList.remove("hidden");
+          contactLinks.classList.add("animate-slide-in");
+        } else {
+          contactLinks.classList.add("hidden");
+          contactLinks.classList.remove("animate-slide-in");
+        }
+      }
     }
-  }
+
+    // Asociar la función al botón
+    const contactoButton = document.getElementById("contacto");
+    if (contactoButton) {
+      contactoButton.addEventListener("click", toggleContactLinks);
+    }
+  });
 </script>
 
 <style>
-
-
   @keyframes slideIn {
     from {
-      transform: translateX(-100%);
+      transform: translateX(-700%);
     }
     to {
-      transform: translateX(420%);
+      transform: translateX(-128%);
     }
   }
 
 
-  @media (max-width: 900px) {
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(320%);
-      }
-    }
-  
-  }
-  @media (max-width: 640px) {
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-  
-  }
 
-.animate-slide-in {
+
+
+  .animate-slide-in {
     animation: slideIn 0.5s ease-out forwards;
   }
 </style>
