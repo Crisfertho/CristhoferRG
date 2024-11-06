@@ -5,7 +5,7 @@ let isVisible = false;
 const handleScroll = () => {
   isVisible = window.scrollY > 300;
   const button = document.querySelector('.scroll-to-top');
-  if (button) {
+  if (button && button instanceof HTMLElement) {
     button.style.opacity = isVisible ? '1' : '0';
   }
 };
@@ -24,13 +24,13 @@ const scrollToTop = () => {
     </svg>
   </button>
   
-  <script client:load>
+  <script>
     // Espera a que el DOM esté completamente cargado
     document.addEventListener('DOMContentLoaded', () => {
-      const button = document.querySelector('.scroll-to-top');
+      const button = document.querySelector('.scroll-to-top')as HTMLElement;
       
       // Asegúrate de que el botón existe antes de agregar el evento
-      if (button) {
+      if (button ) {
         button.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
