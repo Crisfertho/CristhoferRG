@@ -1,0 +1,201 @@
+---
+import HTML from "../icons/html.astro"
+import CSS from "../icons/css.astro"
+import Astros from "../icons/Astro.astro"
+import Laravel from "../icons/laravel.astro"
+import Tailwind from "../icons/tailwind.astro"
+import Java from "../icons/java.astro"
+import JavaScript from "../icons/javascript.astro"
+import PHP from "../icons/php.astro"
+import React from "../icons/react.astro"
+import Python from "../icons/python.astro"
+import SQL from "../icons/sql.astro"
+import Node from "../icons/node.astro"
+import Git from "../icons/git.astro"
+import GitHub from "../icons/GH.astro"
+import Docker from "../icons/Docker.astro"
+import Bootstrap from "../icons/Bootstrap.astro"
+
+const ICONS = [
+
+
+{
+        name: 'HTML',
+        icon: HTML,
+    },
+    {
+        name: 'CSS',
+        icon: CSS,
+    },
+    {
+        name: 'JS',
+        icon: JavaScript,
+    },
+    {
+        name: 'Java',
+        icon: Java,
+    },
+    {
+        name: 'PHP',
+        icon: PHP,
+    },
+    {
+        name: 'Laravel',
+        icon: Laravel,
+    },
+    {
+        name: 'React',
+        icon: React,
+    },
+    {
+        name: 'Astro',
+        icon: Astros,
+    },
+    {
+        name: 'Python',
+        icon: Python,
+    },
+    {
+        name: 'SQL',
+        icon: SQL,
+    },
+    {
+        name: 'Node',
+        icon: Node,
+    },
+    {
+        name: 'Tailwind',
+        icon: Tailwind,
+    },
+    {
+        name: 'Git',
+        icon: GitHub,
+    },
+    {
+        name: 'Git',
+        icon: Git,
+    }, 
+    {
+        name: 'Docker',
+        icon: Docker,
+    },
+    {
+        name: 'Bootstrap',
+        icon: Bootstrap,
+    }
+    
+
+
+]
+
+const PROJECTS = [
+    {
+        date: 'Noviembre 2023',
+        title: 'Bienes Raices MVC',
+        description: 'Proyecto de Bienes Raices para venta y alquiler de propiedades, casa y departamentos',
+        link: 'https://wephupa.nyc.dom.my.id/',
+        github: 'https://github.com/Crisfertho/bienesraicesMVC',
+        image: '/projectsIMG/BienesRaicesMVC.webp',
+        tags: ['HTML, SCSS, PHP, JavaScript, MySQL']
+        
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'TakeCare App',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://bufmusa.mnz.dom.my.id/',
+        github: 'https://github.com/Crisfertho/TakeCareApp',
+        image: '/projectsIMG/TakeCareApp.webp',
+        tags: ['HTML, CSS, Laravel, PHP, JavaScript, MySQL']
+    },
+    {
+        date: 'Febrero 2024',
+        title: 'Sudoku Game',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://crg-sudoku-game.vercel.app/',
+        github: 'https://github.com/Crisfertho/CRGSudokuGame',
+        image: '/projectsIMG/Sudoku.webp',
+        tags: ['HTML, CSS, JavaScript']
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'FindJobs',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://qutnehu.mnz.dom.my.id/',
+        github: 'https://github.com/Crisfertho/CRG-FindJobs',
+        image: '/projectsIMG/FindJobs.webp',
+        tags: ['HTML, CSS, PHP, Laravel, Axios, Blade, JavaScript']
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'Minimalist Portfolio',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://crg-minimalist-portfolio.netlify.app/',
+        github: 'https://github.com/Crisfertho/CRGPortfolio',
+        image: '/projectsIMG/Minimalist.webp',
+        tags: [' Astro, HTML, JavaScript']
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'Guanagram',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://gostuce.nyc.dom.my.id/login',
+        github: 'https://github.com/Crisfertho/Guanagram',
+        image: '/projectsIMG/Guanagram.webp',
+        tags: ['HTML, CSS,PHP, Laravel, JavaScript']
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'Quiosco de Comidas Rápidas',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://github.com/Crisfertho/Quiosco-Comidas---React',
+        github: 'https://github.com/Crisfertho/Quiosco-Comidas---Laravel',
+        image: '/projectsIMG/FastFood.webp',
+        tags: ['HTML, CSS,PHP Laravel, React, JavaScript']
+    },
+    {
+        date: 'Octubre 2024',
+        title: 'BlogCRG',
+        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        link: 'https://crgbasicblog.netlify.app/',
+        github: 'https://github.com/Crisfertho/CRGblog',
+        image: '/projectsIMG/Blog.webp',
+        tags: ['HTML, CSS, JavaScript']
+    }
+]
+---
+
+{
+   <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {PROJECTS.map(({ date, title, description, image, link, github, tags }) => (
+    <article class="mb-2">
+      <h3 class="text-2xl font-bold text-emerald-800 dark:text-amber-200 mb-2">
+        <a href={github} target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+      </h3>
+      <p class="text-lg mb-4 text-pretty overflow-y-auto">{description}</p>
+      <ul class="text-sm flex justify-evenly gap-6 w-full mb-4">
+        {tags.map((tag) => (
+          <li key={tag} class="flex gap-4">
+            {ICONS.filter(({ name }) => tag.includes(name)).map(({ icon: Icon }) => (
+              <div key={tag} class="flex items-center size-4">
+                <Icon />
+              </div>
+            ))}
+          </li>
+        ))}
+      </ul>
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        <img
+          class="w-full h-46 object-cover rounded shadow-xl shadow-white/10 mt-2"
+          src={image}
+          alt={`Imagen del Proyecto ${title}`}
+        />
+      </a>
+     
+    </article>
+  ))}
+</section>
+
+}

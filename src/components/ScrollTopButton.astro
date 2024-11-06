@@ -1,0 +1,86 @@
+---
+let isVisible = false;
+
+// Función para manejar el scroll
+const handleScroll = () => {
+  isVisible = window.scrollY > 300;
+  const button = document.querySelector('.scroll-to-top');
+  if (button) {
+    button.style.opacity = isVisible ? '1' : '0';
+  }
+};
+
+// Función para volver al inicio
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+---
+
+
+<!-- Botón flotante -->
+<button class="scroll-to-top" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+  
+  <script client:load>
+    // Espera a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.querySelector('.scroll-to-top');
+      
+      // Asegúrate de que el botón existe antes de agregar el evento
+      if (button) {
+        button.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+      
+      // Event listener para el scroll
+      document.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          button.style.opacity = '1';
+        } else {
+          button.style.opacity = '0';
+        }
+      });
+    });
+  </script>
+  
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #82a3c66f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Para que no se vea al inicio*/
+    z-index: 1000; 
+  }
+
+  .scroll-to-top:hover {
+  background-color: #c7d1da; 
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1); /* Hace el botón un poco más grande */
+}
+
+  .scroll-to-top svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  .scroll-to-top:active {
+  transform: scale(0.95); /* Disminuye el tamaño ligeramente */
+}
+</style>
+

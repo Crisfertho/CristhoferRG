@@ -1,0 +1,25 @@
+---
+import ExpComponent from "./ExpComponent.astro"
+
+const EXPERIENCE = [
+    {
+        date: 'Actualmente',
+        title: 'Freelance',
+        description: 'Desarrollo de sitios webs utilizando tecnologías, diferentes frameworks y databases. Actualmente trabajando en en la creación de un sitio web informativo.'
+    },
+    {
+        date: 'Diciembre 2022',
+        title: 'Pasantía en Listica SRL',
+        description: 'Pasatía unversitaria en Listica como desarrollador Frontend, utilizando tecnologías como React, Boostratp, HTML, CSS...',
+    },
+]
+---
+<ol class="relative border-s border-gray-20">  
+    {
+        EXPERIENCE.map(experience => (
+        <li class="mb-10 ms-6">   
+            <ExpComponent {...experience} />         
+        </li>
+        ))
+    }                
+</ol>
