@@ -111,7 +111,7 @@ const PROJECTS = [
     {
         date: 'Febrero 2024',
         title: 'Sudoku Game',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'Juego Sudoku, con modo oscuro, creado con JS, HTML, y CSS',
         link: 'https://crg-sudoku-game.vercel.app/',
         github: 'https://github.com/Crisfertho/CRGSudokuGame',
         image: '/projectsIMG/Sudoku.webp',
@@ -120,7 +120,7 @@ const PROJECTS = [
     {
         date: 'Octubre 2024',
         title: 'FindJobs',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'Página para cración y busqueda de vacantes para desarrolladores, programadores, UX... Hecho con laravel, Blade, MVC.',
         link: 'https://qutnehu.mnz.dom.my.id/',
         github: 'https://github.com/Crisfertho/CRG-FindJobs',
         image: '/projectsIMG/FindJobs.webp',
@@ -129,7 +129,7 @@ const PROJECTS = [
     {
         date: 'Octubre 2024',
         title: 'Minimalist Portfolio',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'Desarrollado con Astro y estructurado con JSON para una experiencia web rápida y fluida. Diseñado para destacar contenido esencial con un enfoque limpio y moderno.',
         link: 'https://crg-minimalist-portfolio.netlify.app/',
         github: 'https://github.com/Crisfertho/CRGPortfolio',
         image: '/projectsIMG/Minimalist.webp',
@@ -138,7 +138,7 @@ const PROJECTS = [
     {
         date: 'Octubre 2024',
         title: 'Guanagram',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'Clon básico de instagram con las principales funcionalidades tal como login, subir publicaciones con imagenes, hacer comentarios, seguir o dejar de seguir usuarios...',
         link: 'https://gostuce.nyc.dom.my.id/login',
         github: 'https://github.com/Crisfertho/Guanagram',
         image: '/projectsIMG/Guanagram.webp',
@@ -147,16 +147,16 @@ const PROJECTS = [
     {
         date: 'Octubre 2024',
         title: 'Quiosco de Comidas Rápidas',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'App sobre ordenes y compras de comidas rapidas en linea, proyecto realizado con laravel y react, combiando framework PHP y la biblioteca de react.',
         link: 'https://github.com/Crisfertho/Quiosco-Comidas---React',
         github: 'https://github.com/Crisfertho/Quiosco-Comidas---Laravel',
         image: '/projectsIMG/FastFood.webp',
         tags: ['HTML, CSS,PHP Laravel, React, JavaScript']
     },
     {
-        date: 'Octubre 2024',
+        date: 'Marzo 2023',
         title: 'BlogCRG',
-        description: 'App sobre cuidados personales(Salón de belleza) tanto para hombres como de mujeres hecho en PHP MVC',
+        description: 'Mi primera página realizada con HTML, CSS y JS. ',
         link: 'https://crgbasicblog.netlify.app/',
         github: 'https://github.com/Crisfertho/CRGblog',
         image: '/projectsIMG/Blog.webp',
@@ -174,7 +174,7 @@ const PROJECTS = [
           {title}
         </a>
       </h3>
-      <p class="text-lg mb-4 text-pretty overflow-y-auto">{description}</p>
+      <p class="text-lg h-24 mb-4 text-pretty overflow-y-auto">{description}</p>
       <ul class="text-sm flex justify-evenly gap-6 w-full mb-4">
         {tags.map((tag) => (
           <li class="flex gap-4">
@@ -188,7 +188,7 @@ const PROJECTS = [
       </ul>
       <a href={link} target="_blank" rel="noopener noreferrer">
         <img
-          class="w-full h-46 object-cover rounded shadow-xl shadow-white/10 mt-2"
+          class="w-full h-[250px] object-cover rounded shadow-xl shadow-white/10 mt-2"
           src={image}
           alt={`Imagen del Proyecto ${title}`}
         />
