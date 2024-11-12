@@ -6,52 +6,53 @@ import Whats from "../icons/Whats.astro"
 import GitH from "../icons/GitHub.astro"
 ---
 
-<footer id="footer" class="rounded-lg shadow bg-black/20 backdrop-blur-lg w-full lg:max-w-[850px] mx-auto">
-  <div class="w-full mx-auto max-w-screen-lg p-4 sm:flex md:items-center justify-between">
+<footer id="footer" class="rounded-lg shadow bg-black/20 backdrop-blur-lg w-full lg:max-w-[830px] mx-auto ">
+  <div class="p-4 flex justify-between">
     <span class="text-sm text-neutral-700 dark:text-amber-200/80 sm:text-center">© 2024 
-      <a href="https://linkedin.com/in/cristhofer-riverag92/" target="_blank" rel="noopener noreferrer"
+      <a href="https://linkedin.com/in/cristhofer-riverag92/" target="_blank" rel="noopener noreferrer external"
         class="hover:underline text-lg font-bold text-teal-950/90 dark:text-slate-300">CristhoferRG</a>.
     </span>
 
-    <div class="flex">
-    <!-- Botón de Contacto -->
-    <button id="contacto" class="cursor-pointer flex items-center" aria-expanded="false" onclick="toggleContactLinks()">
-      <!-- Icono de Contacto -->
-      <Contact class="text-lg font-bold text-slate-700/90 dark:text-slate-300 mr-2" /> Contacto
-    </button>
+    <section class="flex">
+      <!-- Botón de Contacto con mejoras de accesibilidad -->
+      <button id="contacto" class="cursor-pointer items-center flex " aria-expanded="false" aria-haspopup="true" aria-controls="contactLinks">
+        <Contact aria-hidden="true" class="text-lg font-bold text-slate-700/90 dark:text-slate-300 mr-2" />
+        <span class="sr-only">Abrir contactos</span> Contacto
+      </button>
 
-    <!-- Enlaces de Contacto adicionales ocultos inicialmente -->
-    <ul id="contactLinks" class="flex flex-row items-center space-x-4 text-sm font-medium text-white/90 hidden absolute animate-slide-in">
-      <li>
-        <a href="mailto:cristhofer.rg06@gmail.com" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-          <Email />
-        </a>
-      </li>
-      <li>
-        <a href="tel:+60865218" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-          <Whats />
-        </a>
-      </li>
-      <li>
-        <a href="https://www.instagram.com/cristhoferrg06" 
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-          <Instagram class="size-5"/>
-        </a>
-      </li>
-      <li>
-        <a href="Https://www.github.com/Crisfertho/" 
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-          <GitH class="size-5"/>
-        </a>
-      </li>
-    </ul>
-  </div>
+      <!-- Lista de enlaces de contacto -->
+      <ul id="contactLinks" class="flex hidden items-center space-x-3 text-sm font-medium text-white/90 absolute animate-slide-in" role="menu">
+        <li role="menuitem">
+          <a href="mailto:cristhofer.rg06@gmail.com" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+            <Email aria-hidden="true" />
+            <span class="sr-only">Correo</span>
+          </a>
+        </li>
+        <li role="menuitem">
+          <a href="tel:+60865218" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+            <Whats aria-hidden="true" />
+            <span class="sr-only">WhatsApp</span>
+          </a>
+        </li>
+        <li role="menuitem">
+          <a href="https://www.instagram.com/cristhoferrg06" target="_blank" rel="noopener noreferrer external"
+          class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+            <Instagram aria-hidden="true" class="size-5"/>
+            <span class="sr-only">Instagram</span>
+          </a>
+        </li>
+        <li role="menuitem">
+          <a href="https://www.github.com/Crisfertho/" target="_blank" rel="noopener noreferrer external"
+          class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+            <GitH aria-hidden="true" class="size-5"/>
+            <span class="sr-only">GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </section>
   </div>
 </footer>
+
 
 <script>
   // Esperar a que el DOM esté completamente cargado
@@ -84,23 +85,13 @@ import GitH from "../icons/GitHub.astro"
 <style>
   @keyframes slideIn {
     from {
-      transform: translateX(-700%);
+      transform: translateX(-500%);
     }
     to {
       transform: translateX(-128%);
     }
   }
 
-  @media (max-width: 640px) {
-    @keyframes slideIn {
-      from {
-        transform: translateX(300%);
-      }
-      to {
-        transform: translateX(90%);
-      }
-    }
-  }
 
   .animate-slide-in {
     animation: slideIn 0.5s ease-out forwards;
