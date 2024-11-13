@@ -8,42 +8,43 @@ import GitH from "../icons/GitHub.astro"
 
 <footer id="footer" class="rounded-lg shadow bg-black/20 backdrop-blur-lg w-full lg:max-w-[830px] mx-auto ">
   <div class="p-4 flex justify-between">
-    <span class="text-sm text-neutral-700 dark:text-amber-200/80 sm:text-center">© 2024 
+    <span class="text-xs sm:text-sm text-neutral-700 dark:text-amber-200/80 sm:text-center">© 2024 
       <a href="https://linkedin.com/in/cristhofer-riverag92/" target="_blank" rel="noopener noreferrer external"
-        class="hover:underline text-lg font-bold text-teal-950/90 dark:text-slate-300">CristhoferRG</a>.
+        class="hover:underline text-sm sm:text-lg font-bold text-teal-950/90 dark:text-slate-300">CristhoferRG</a>.
     </span>
 
     <section class="flex">
       <!-- Botón de Contacto con mejoras de accesibilidad -->
-      <button id="contacto" class="cursor-pointer items-center flex " aria-expanded="false" aria-haspopup="true" aria-controls="contactLinks">
-        <Contact aria-hidden="true" class="text-lg font-bold text-slate-700/90 dark:text-slate-300 mr-2" />
+      <button id="contacto" class="cursor-pointer items-center flex 2xl:hidden " 
+              aria-expanded="false" 
+              aria-haspopup="true" 
+              aria-controls="contactLinks">
+        <Contact aria-hidden="true" />
         <span class="sr-only">Abrir contactos</span> Contacto
       </button>
 
       <!-- Lista de enlaces de contacto -->
-      <ul id="contactLinks" class="flex hidden items-center space-x-3 text-sm font-medium text-white/90 absolute animate-slide-in" role="menu">
+      <ul id="contactLinks" class="flex hidden items-center space-x-3 font-medium absolute animate-slide-in" role="menu">
         <li role="menuitem">
-          <a href="mailto:cristhofer.rg06@gmail.com" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-            <Email aria-hidden="true" />
+          <a href="mailto:cristhofer.rg06@gmail.com">
+            <Email aria-hidden="true"/>
             <span class="sr-only">Correo</span>
           </a>
         </li>
         <li role="menuitem">
-          <a href="tel:+60865218" class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
-            <Whats aria-hidden="true" />
+          <a href="tel:+60865218">
+            <Whats aria-hidden="true"/>
             <span class="sr-only">WhatsApp</span>
           </a>
         </li>
         <li role="menuitem">
-          <a href="https://www.instagram.com/cristhoferrg06" target="_blank" rel="noopener noreferrer external"
-          class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+          <a href="https://www.instagram.com/cristhoferrg06" target="_blank" rel="noopener noreferrer external">
             <Instagram aria-hidden="true" class="size-5"/>
             <span class="sr-only">Instagram</span>
           </a>
         </li>
         <li role="menuitem">
-          <a href="https://www.github.com/Crisfertho/" target="_blank" rel="noopener noreferrer external"
-          class="hover:underline text-lg font-bold text-slate-700/90 dark:text-slate-300">
+          <a href="https://www.github.com/Crisfertho/" target="_blank" rel="noopener noreferrer external">
             <GitH aria-hidden="true" class="size-5"/>
             <span class="sr-only">GitHub</span>
           </a>
@@ -80,6 +81,7 @@ import GitH from "../icons/GitHub.astro"
       contactoButton.addEventListener("click", toggleContactLinks);
     }
   });
+
 </script>
 
 <style>
@@ -88,7 +90,7 @@ import GitH from "../icons/GitHub.astro"
       transform: translateX(-500%);
     }
     to {
-      transform: translateX(-128%);
+      transform: translateX(-105%);
     }
   }
 
