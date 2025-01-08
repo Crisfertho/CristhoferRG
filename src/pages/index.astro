@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import ScrollTopButton from "../components/ScrollTopButton.astro";
 import Intro from "../components/Intro.astro"
+import Education from "../components/Education.astro"
+import Degree from "../icons/Degree.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Briefcase from "../icons/Briefcase.astro";
@@ -19,9 +21,17 @@ import Skills from "@/components/Skills.astro";
 >
 	<main class="p-5">
 		<section class="w-full mx-auto lg:w-[740px] py-40 pb-20" id="inicio">
-		<Intro>
-			<slot />
-		</Intro>
+			<Intro>
+				<slot />
+			</Intro>
+		</section>
+		<!--Sección de Educación -->
+		<section class="w-full mx-auto lg:w-[740px]" id="educacion">
+			<h2 class="text-2xl font-semibold mb-6 flex gap-x-2 items-center">
+				<Degree class="size-6" />
+				Educación
+			</h2>
+			<Education/>
 		</section>
 		<!--Sección de Experiencia -->
 		<section class="w-full mx-auto lg:w-[740px]" id="experiencia">

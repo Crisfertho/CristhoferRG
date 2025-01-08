@@ -1,0 +1,40 @@
+---
+import ExpComponent from "./ExpComponent.astro"
+
+const EXPERIENCE = [
+    {
+        date: '2016-2023',
+        title: 'Informática Empresarial',
+        description: 'Estudiante de la carrera de Informática Empresarial en la Universidad de Costa Rica.',
+    },
+    {
+        date: '2015',
+        title: 'Relaciones Humanas y Manejo de Conflictos',
+        description: 'Instituo Nacional de Aprendizaje (INA).',
+    },
+    {
+        date: '2014-2015',
+        title: 'Técnico especialista en Telecomunicaciones e Inglés Intermedio',
+        description: 'Univerdidad Politécnica Internacional.',
+    },
+    {
+        date: '2011',
+        title: 'Técnico en Farmacia',
+        description: 'Universidad de San Jóse.',
+    },
+    {
+        date: '2011',
+        title: 'Ingles básico',
+        description: 'Instituo Nacional de Aprendizaje (INA).',
+    },
+]
+---
+<ol class="relative border-s border-gray-20">  
+    {
+        EXPERIENCE.map(experience => (
+        <li class="mb-10 ms-5">   
+            <ExpComponent {...experience} />         
+        </li>
+        ))
+    }                
+</ol>
