@@ -221,29 +221,37 @@ const PROJECTS = [
 </section>
 
 <script>
-    if (typeof window !== "undefined") {
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll("[data-action]").forEach(button => {
-                button.addEventListener("click", (event) => {
-                    const action = event.target.getAttribute("data-action");
-                    const projectIndex = event.target.getAttribute("data-project");
-                    const imageElement = document.getElementById(`carousel-image-${projectIndex}`);
-                    let currentIndex = parseInt(imageElement.getAttribute("data-index"), 10);
-                    const images = JSON.parse(imageElement.getAttribute("data-images"));
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-action]").forEach(button => {
+        button.addEventListener("click", (event) => {
+          const target = event.target as HTMLElement;
 
-                    if (action === "next") {
-                        currentIndex = (currentIndex + 1) % images.length;
-                    } else if (action === "prev") {
-                        currentIndex = (currentIndex - 1 + images.length) % images.length;
-                    }
+          const action = target.getAttribute("data-action");
+          const projectIndex = target.getAttribute("data-project");
 
-                    imageElement.setAttribute("data-index", currentIndex);
-                    imageElement.src = images[currentIndex];
-                });
-            });
+          const imageElement = document.getElementById(`carousel-image-${projectIndex}`) as HTMLImageElement;
+
+          const indexAttr = imageElement.getAttribute("data-index");
+          const imagesAttr = imageElement.getAttribute("data-images");
+
+          let currentIndex = indexAttr ? parseInt(indexAttr, 10) : 0;
+          const images = imagesAttr ? JSON.parse(imagesAttr) : [];
+
+          if (action === "next") {
+            currentIndex = (currentIndex + 1) % images.length;
+          } else if (action === "prev") {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+          }
+
+          imageElement.setAttribute("data-index", currentIndex.toString());
+          imageElement.src = images[currentIndex];
         });
-    }
+      });
+    });
+  }
 </script>
+
 
 
 }
