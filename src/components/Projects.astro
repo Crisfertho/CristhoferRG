@@ -15,6 +15,7 @@ import Git from "../icons/git.astro"
 import GitHub from "../icons/GH.astro"
 import Docker from "../icons/Docker.astro"
 import Bootstrap from "../icons/Bootstrap.astro"
+import Layout from "@/layouts/Layout.astro"
 
 const ICONS = [
 
@@ -80,6 +81,16 @@ const ICONS = [
 ]
 
 const PROJECTS = [
+    {
+        date: 'Octubre 2025',
+        title: 'Online Store',
+        description: 'Tienda virtual para la venta de productos para el cuidado del cabello, desarrollada con Laravel, Vue.js y Tailwind CSS.',
+        link: 'Privada',
+        github: '',
+        images:['/projectsIMG/Agosto97/agosto01.webp', '/projectsIMG/Agosto97/agosto02.webp','/projectsIMG/Agosto97/agosto03.webp','/projectsIMG/Agosto97/agosto04.webp', '/projectsIMG/Agosto97/agosto05.webp', '/projectsIMG/Agosto97/agosto06.webp', '/projectsIMG/Agosto97/agosto07.webp', '/projectsIMG/Agosto97/agosto08.webp', '/projectsIMG/Agosto97/agosto09.webp', '/projectsIMG/Agosto97/agosto10.webp', '/projectsIMG/Agosto97/agosto11.webp'        ],
+        tags: ['Laravel, PHP, MySQL'],
+
+    },
     {
         date: 'Marzo 2025',
         title: 'Home Works',
@@ -175,7 +186,6 @@ const PROJECTS = [
     }
 ]
 ---
-
 {
    <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   {PROJECTS.map(({title, description, images, link, github, tags }, index) => (
@@ -202,24 +212,25 @@ const PROJECTS = [
      <!-- Carrusel de Imágenes -->
       <div class="relative w-full md:max-h-[190px] rounded shadow-xl shadow-white/10 mb-4 overflow-hidden">
         <img
-          class="w-full object-cover rounded transition-opacity duration-500"
+          class="w-full object-cover rounded transition-opacity duration-500 cursor-pointer hover:opacity-90"
           src={images[0]}
           alt={`Imagen del Proyecto ${title}`}
           id={`carousel-image-${index}`}
           data-index="0"
           data-images={JSON.stringify(images)}
+          data-project={index}
         />
         
         <!-- Botones de navegación -->
         <button
-          class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+          class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
           data-action="prev"
           data-project={index}
         >
           ◀
         </button>
         <button
-          class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+          class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
           data-action="next"
           data-project={index}
         >
@@ -230,9 +241,118 @@ const PROJECTS = [
   ))}
 </section>
 
+<!-- Modal para imagen ampliada -->
+<div id="image-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+  <div class="relative max-w-7xl max-h-screen w-full h-full flex items-center justify-center">
+    <!-- Botón cerrar -->
+    <button
+      id="modal-close"
+      class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10"
+    >
+      x
+    </button>
+    
+    <!-- Imagen del modal -->
+    <img
+      id="modal-image"
+      class="max-w-full max-h-full object-contain"
+      src=""
+      alt="Imagen ampliada"
+    />
+    
+    <!-- Botones de navegación en el modal -->
+    <button
+      id="modal-prev"
+      class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full text-2xl hover:bg-opacity-70"
+    >
+      ◀
+    </button>
+    <button
+      id="modal-next"
+      class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full text-2xl hover:bg-opacity-70"
+    >
+      ▶
+    </button>
+  </div>
+</div>
+
 <script is:inline>
 if (typeof window !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("image-modal");
+        const modalImage = document.getElementById("modal-image");
+        const modalClose = document.getElementById("modal-close");
+        const modalPrev = document.getElementById("modal-prev");
+        const modalNext = document.getElementById("modal-next");
+        
+        let currentModalImages = [];
+        let currentModalIndex = 0;
+        
+        // Función para actualizar la imagen del modal
+        function updateModalImage() {
+            if (modalImage && currentModalImages.length > 0) {
+                modalImage.src = currentModalImages[currentModalIndex];
+            }
+        }
+        
+        // Abrir modal al hacer click en la imagen
+        document.querySelectorAll("[id^='carousel-image-']").forEach(img => {
+            img.addEventListener("click", () => {
+                const imagesStr = img.getAttribute("data-images");
+                const currentIndexStr = img.getAttribute("data-index");
+                
+                if (imagesStr && currentIndexStr && modal && modalImage) {
+                    currentModalImages = JSON.parse(imagesStr);
+                    currentModalIndex = parseInt(currentIndexStr, 10);
+                    updateModalImage();
+                    modal.classList.remove("hidden");
+                    modal.classList.add("flex");
+                }
+            });
+        });
+        
+        // Cerrar modal
+        if (modalClose && modal) {
+            modalClose.addEventListener("click", () => {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+            });
+        }
+        
+        // Cerrar modal al hacer click fuera de la imagen
+        if (modal) {
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                }
+            });
+        }
+        
+        // Navegación en el modal
+        if (modalPrev) {
+            modalPrev.addEventListener("click", () => {
+                currentModalIndex = (currentModalIndex - 1 + currentModalImages.length) % currentModalImages.length;
+                updateModalImage();
+            });
+        }
+        
+        if (modalNext) {
+            modalNext.addEventListener("click", () => {
+                currentModalIndex = (currentModalIndex + 1) % currentModalImages.length;
+                updateModalImage();
+            });
+        }
+        
+        // Cerrar con tecla ESC
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+            }
+        });
+        
+        // Navegación del carrusel 
         document.querySelectorAll("[data-action]").forEach(button => {
             button.addEventListener("click", (event) => {
                 const target = event.target;
@@ -271,6 +391,4 @@ if (typeof window !== "undefined") {
 </script>
 
 }
-
-
 
